@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.sonarqube' version '4.0.0.2929'
 }
 
 group 'org.example'
@@ -7,6 +8,14 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+sonar {
+    properties {
+        property "sonar.projectKey", "paisaruso_MyCalculatorUff"
+        property "sonar.organization", "paisaruso"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login=05ce53f380fd94bd279511e57eeb2f2d163ed7f0"
+    }
 }
 
 dependencies {
