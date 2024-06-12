@@ -11,35 +11,70 @@ public class OperacionesBasicas {
     public OperacionesBasicas() {
     }
 
+    private void solicitarNumeros() {
+        try {
+            this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
+            this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog((Component)null, "Por favor, ingrese valores numéricos válidos");
+            return;
+        }
+    }
+
     public void suma() {
-        this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
+        solicitarNumeros();
         this.resultado = this.number1 + this.number2;
         JOptionPane.showMessageDialog((Component)null, "El resultado es " + this.resultado);
     }
 
     public void resta() {
-        this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
+        solicitarNumeros();
         this.resultado = this.number1 - this.number2;
         JOptionPane.showMessageDialog((Component)null, "El resultado es " + this.resultado);
     }
 
     public void division() {
-        this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
-        this.resultado = this.number1 / this.number2;
-        JOptionPane.showMessageDialog((Component)null, "El resultado es " + this.resultado);
+        solicitarNumeros();
+        if (this.number2 == 0) {
+            JOptionPane.showMessageDialog((Component)null, "No se puede dividir por cero");
+        } else {
+            this.resultado = this.number1 / this.number2;
+            JOptionPane.showMessageDialog((Component)null, "El resultado es " + this.resultado);
+        }
     }
 
     public void multiplicacion() {
-        this.number1 = Double.parseDouble(JOptionPane.showInputDialog("Digite el primer valor"));
-        this.number2 = Double.parseDouble(JOptionPane.showInputDialog("Digite el segundo valor"));
+        solicitarNumeros();
         this.resultado = this.number1 * this.number2;
         JOptionPane.showMessageDialog((Component)null, "El resultado es " + this.resultado);
     }
 
-    public void integrales() {
+    // Métodos para pruebas unitarias
+    public void suma(double num1, double num2) {
+        this.number1 = num1;
+        this.number2 = num2;
+        this.resultado = this.number1 + this.number2;
+    }
+
+    public void resta(double num1, double num2) {
+        this.number1 = num1;
+        this.number2 = num2;
+        this.resultado = this.number1 - this.number2;
+    }
+
+    public void division(double num1, double num2) {
+        this.number1 = num1;
+        this.number2 = num2;
+        if (this.number2 == 0) {
+            throw new ArithmeticException("No se puede dividir por cero");
+        } else {
+            this.resultado = this.number1 / this.number2;
+        }
+    }
+
+    public void multiplicacion(double num1, double num2) {
+        this.number1 = num1;
+        this.number2 = num2;
+        this.resultado = this.number1 * this.number2;
     }
 }
-

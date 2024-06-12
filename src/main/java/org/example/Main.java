@@ -14,28 +14,31 @@ public class Main {
         OperacionesBasicas object = new OperacionesBasicas();
 
         do {
-            menu = JOptionPane.showInputDialog("MENU PRINCIPAL\n1. Suma\n2. Resta\n3. División\n4 Multiplicación\n5. Salir");
-            option = Integer.parseInt(menu);
-            switch (option) {
-                case 0:
-                    object.integrales();
-                case 1:
-                    object.suma();
-                    break;
-                case 2:
-                    object.resta();
-                    break;
-                case 3:
-                    object.division();
-                    break;
-                case 4:
-                    object.multiplicacion();
-                case 5:
-                    break;
-                default:
-                    JOptionPane.showMessageDialog((Component)null, "La opción " + option + " es incorrecta");
+            menu = JOptionPane.showInputDialog("MENU PRINCIPAL\n1. Suma\n2. Resta\n3. División\n4. Multiplicación\n5. Salir");
+            try {
+                option = Integer.parseInt(menu);
+                switch (option) {
+                    case 1:
+                        object.suma();
+                        break;
+                    case 2:
+                        object.resta();
+                        break;
+                    case 3:
+                        object.division();
+                        break;
+                    case 4:
+                        object.multiplicacion();
+                        break;
+                    case 5:
+                        // Salir
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog((Component) null, "La opción " + option + " es incorrecta");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog((Component) null, "Por favor, ingrese un número válido");
             }
-        } while(option != 5);
-
+        } while (option != 5);
     }
 }
